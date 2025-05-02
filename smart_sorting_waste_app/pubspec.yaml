@@ -1,0 +1,23 @@
+name: smart_sorting_waste_app
+description: A smart waste sorting app using Flutter and Flask
+
+version: 1.0.0+1   # <-- ADD THIS LINE (important!)
+
+environment:
+  sdk: '^3.7.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  camera: ^0.10.5+2
+  speech_to_text: ^6.4.0
+  path_provider: ^2.1.2
+  path: ^1.9.0
+  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
