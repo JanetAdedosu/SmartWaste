@@ -1,0 +1,17 @@
+# Python virtual env
+env/
+.venv/
+
+# Cache
+__pycache__/
+*.py[cod]
+
+# IDE/project files
+.vscode/
+.idea/
+
+# Data / model / test images
+*.jpg
+*.png
+waste_model.pth
+garbage-dataset/
