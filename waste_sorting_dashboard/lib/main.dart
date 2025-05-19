@@ -8,8 +8,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Waste Sorter',
       debugShowCheckedModeBanner: false,
+      title: 'Waste Sorter',
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
@@ -54,23 +54,16 @@ class WasteDashboard extends StatelessWidget {
             color: cat.color.withOpacity(0.2),
             child: InkWell(
               onTap: () {
-                // You can add navigation or a modal here later
+                // Future: Navigate to detail screen
               },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(cat.icon, size: 40, color: cat.color),
                   SizedBox(height: 10),
-                  Text(
-                    cat.name,
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
+                  Text(cat.name, style: TextStyle(fontWeight: FontWeight.bold)),
                   SizedBox(height: 5),
-                  Text(
-                    cat.description,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 12),
-                  ),
+                  Text(cat.description, textAlign: TextAlign.center),
                 ],
               ),
             ),
