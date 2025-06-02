@@ -1,27 +1,82 @@
 import 'package:flutter/material.dart';
-import 'package:camera/camera.dart';
-import 'speech_screen.dart';
 
-List<CameraDescription> cameras = [];
-
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  cameras = await availableCameras();
-  runApp(const SmartWasteApp());
+void main() {
+  runApp(MyApp());
 }
 
-class SmartWasteApp extends StatelessWidget {
-  const SmartWasteApp({super.key});
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Smart Waste App',
+      title: 'Waste Sorter',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: SpeechScreen(cameras: cameras), // 👈 PASS CAMERAS
+      home: WasteDashboard(),
+    );
+  }
+}
+
+class WasteCategory {
+  final String name;
+  final String description;
+  final IconData icon;
+  final Color color;
+
+  WasteCategory(this.name, this.description, this.icon, this.color);
+}
+
+class WasteDashboard extends StatelessWidget {
+  final List<WasteCategory> categories = [
+    WasteCategory("Recyclable", "Bottles, paper, cans", Icons.recycling, Colors.green),
+    WasteCategory("Organic", "Food waste, plants", Icons.eco, Colors.brown),
+    WasteCategory("Hazardous", "Batteries, chemicals", Icons.warning, Colors.red),
+    WasteCategory("E-Waste", "Phones, appliances", Icons.devices, Colors.blue),
+    WasteCategory("General", "Wrappers, dirty tissues", Icons.delete, Colors.grey),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Waste Categories")),
+      body: GridView.builder(
+        padding: const EdgeInsets.all(10),
+        itemCount: categories.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+        ),
+        itemBuilder: (context, index) {
+          final cat = categories[index];
+          return Card(
+            color: cat.color.withOpacity(0.2),
+            child: InkWell(
+              onTap: () {
+                // You can add navigation or a modal here later
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(cat.icon, size: 40, color: cat.color),
+                  SizedBox(height: 10),
+                  Text(
+                    cat.name,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    cat.description,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 12),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
