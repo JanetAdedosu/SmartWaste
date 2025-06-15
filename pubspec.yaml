@@ -1,0 +1,33 @@
+name: waste_sorting_dashboard
+description: "A new Flutter project."
+version: 1.0.0+1   # <-- ADD THIS LINE (important!)
+
+environment:
+  sdk: '^3.7.0'
+
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  camera: ^0.11.1
+  speech_to_text: ^7.0.0
+  path_provider: ^2.1.2
+  path: ^1.9.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  
+flutter:
+  uses-material-design: true
+
+
+  assets:
+    - assets/images/recyclable.png
+    - assets/images/E-waste.png
+    - assets/images/General waste.png
+    - assets/images/organic.png
+    - assets/images/Harzadous.png
+   
